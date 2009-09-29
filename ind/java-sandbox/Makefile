@@ -1,5 +1,8 @@
 JAVACFLAGS=
 
+all: HelloWorldApp.class
+	
+
 HelloWorldApp.class: HelloWorldApp.java
 	javac $(JAVACFLAGS) $<
 
