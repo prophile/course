@@ -28,7 +28,7 @@ class Stripper
 		        ch == '\n' ||
 		        ch == '\r');
 	}
-	
+
 	/**
 	 * Pass the input stream to the output stream devoid of extra whitespace
 	 *
@@ -56,7 +56,7 @@ class Stripper
 			{
 				inStream.read(inputBuffer);
 				boolean isWhitespace = IsWhitespace(inputBuffer[0]);
-				
+
 				// this depends on case
 				if (isWhitespace && hitWhitespace)
 				{

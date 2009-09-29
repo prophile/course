@@ -1,2 +1,3 @@
 ind/			stuff unrelated to the course - independent
 ind/java-sandbox	random java playground
+uncrustify/		config files for uncrustify
