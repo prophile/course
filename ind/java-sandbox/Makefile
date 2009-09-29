@@ -1,4 +1,4 @@
-JAVACFLAGS=
+JAVACFLAGS=-g
 
 all: HelloWorldApp.class BasicIOApp.class StripWSApp.class
 	
