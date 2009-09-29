@@ -1,7 +1,10 @@
 JAVACFLAGS=
 
-all: HelloWorldApp.class BasicIOApp.class
+all: HelloWorldApp.class BasicIOApp.class StripWSApp.class
 	
+
+StripWSApp.class: StripWSApp.java
+	javac $(JAVACFLAGS) $<
 
 HelloWorldApp.class: HelloWorldApp.java
 	javac $(JAVACFLAGS) $<
