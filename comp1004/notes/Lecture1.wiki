@@ -1,0 +1,47 @@
+==COMP1004==
+
+Sod's law: in any given situation, frustration tends to its maximum possible value.
+
+Programming: a useful definition
+
+Abstraction:
+  removing detail to expose the essential features of a particular concept or object
+
+Object Orientation (and its counterparts)
+Thinking OO
+Programming Blocks
+* Variables
+* Logic
+* Data Structures
+* Methods
+
+This is a theory lecture: important concepts
+
+Programming: writing, testing, debugging/troubleshooting, and maintaining the source code of computer programs; a set of instructions to perform a specific task.
+
+Pseudocode: fake code, written like english
+
+Modularization(!)
+* dividing a whole into well-defined parts
+* can be built and examined separately
+* test-driven development
+
+Flavours
+
+Procedural/Imperative
+  (do this, do that, if this then do that)
+  Object Orientation
+    Everything is a Thing
+    There are properties that a Thing has
+    a class is a blueprint
+    many instances of same 'blueprint'
+    all with similar properties
+
+Functional
+  - more like mathematical functions
+  - don't use mutable variables
+  - basicaly stateless
+
+Maths is statements of facts, CS is "do something".
+
+DSs: Arrays, HashMaps
