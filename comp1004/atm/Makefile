@@ -1,4 +1,4 @@
-all: ATMApplication.class ATM.class ATMOverdraftException.class ATMInvalidAmountException.class
+all: ATMApplication.class Account.class ATMOverdraftException.class ATMInvalidAmountException.class
 
 clean:
 	rm -f *.class
@@ -6,7 +6,7 @@ clean:
 ATMApplication.class: ATMApplication.java
 	javac $^
 
-ATM.class: ATM.java
+Account.class: Account.java
 	javac $^
 
 ATMOverdraftException.class: ATMOverdraftException.java

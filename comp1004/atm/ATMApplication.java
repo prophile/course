@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public class ATMApplication
 {
-	private ATM atm;
+	private Account account;
 	
 	/**
 	 * Basic constructor: prompts user for inital balance
@@ -16,12 +16,12 @@ public class ATMApplication
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter initial balance: ");
-		while (atm == null)
+		while (account == null)
 		{
 			try
 			{
 				int initialBalance = scanner.nextInt();
-				atm = new ATM(initialBalance);
+				account = new Account(initialBalance);
 				break;
 			}
 			catch (ATMOverdraftException exception)
@@ -57,17 +57,17 @@ public class ATMApplication
 					case 1:
 						System.out.print("Enter the amount to deposit: ");
 						amount = scanner.nextInt();
-						atm.Deposit(amount);
+						account.Deposit(amount);
 						System.out.println("Your wish is my command.");
 						break;
 					case 2:
 						System.out.print("Enter the amount to withdraw: ");
 						amount = scanner.nextInt();
-						atm.Withdraw(amount);
+						account.Withdraw(amount);
 						System.out.println("So be it.");
 						break;
 					case 3:
-						System.out.println("Your balance is: " + atm.Query());
+						System.out.println("Your balance is: " + account.Query());
 						break;
 					case 4:
 						System.out.println("bai~~");

@@ -1,12 +1,11 @@
 /**
- * A very poorly-named class (should be Account) that represents an account.
- * Unfortunately, SEE's refactoring tools are shit.
+ * A class representing an Account.
  *
  * Missing feature: cannot handle overdrafts
  * Bug: balance should be arbitrary-precision, if user has more than about 20 million they'll overflow;
  *      these are customers that the bank will REALLY want to be keeping happy
  */
-public class ATM
+public class Account
 {
 	private int balance = 0;
 	
@@ -16,7 +15,7 @@ public class ATM
 	 * @param initialBalance Initial account balance.
 	 * @throws ATMOverdraftException You get to guess when this gets thrown.
 	 */
-	public ATM ( int initialBalance ) throws ATMOverdraftException
+	public Account ( int initialBalance ) throws ATMOverdraftException
 	{
 		if (initialBalance < 0)
 			throw new ATMOverdraftException();
