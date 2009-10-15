@@ -1,3 +1,5 @@
 ind/			stuff unrelated to the course - independent
 ind/java-sandbox	random java playground
 uncrustify/		config files for uncrustify
+info1010/		stuff for the module INFO1010
+comp1004/		stuff for the module COMP1004
