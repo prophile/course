@@ -103,6 +103,10 @@ public class Driver
 			{
 				int ch = inputScanner.nextInt();
 				DVDPlayer player = (DVDPlayer)mainTV.getOutputStreamForChannel(ch);
+				if (player == null)
+				{
+					System.out.println("No DVD player attached there.");
+				}
 				if (!inputScanner.hasNext())
 				{
 					System.out.print(">> ");
@@ -136,6 +140,7 @@ public class Driver
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			System.out.println("rtfm");
 		}
 	}

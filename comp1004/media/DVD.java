@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * A representation of a DVD
  */
-public class DVD
+public class DVD implements Serializable
 {
 	private String title;
 	

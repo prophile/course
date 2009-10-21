@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * A DVD player.
  */
-public class DVDPlayer extends TVPeripheral
+public class DVDPlayer extends TVPeripheral implements Serializable
 {
 	private boolean state;
 	private DVD currentDVD;
