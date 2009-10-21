@@ -1,9 +1,10 @@
 import java.util.Hashtable;
+import java.io.Serializable;
 
 /**
  * A TV connected to the DVD player
  */
-public class TV
+public class TV implements Serializable
 {
 	private boolean state;
 	private int channel;

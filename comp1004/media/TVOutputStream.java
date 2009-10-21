@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * A stream, attached to a given channel, of output.
  */
-abstract class TVOutputStream
+abstract class TVOutputStream implements Serializable
 {
 	/**
 	 * Display current channel information.
