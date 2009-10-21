@@ -7,7 +7,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 {
 	private boolean state;
 	private DVD currentDVD;
-	
+
 	private void requireOn () throws TurnTheDamnThingOnFirstException
 	{
 		if (!state)
@@ -15,7 +15,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 			throw new TurnTheDamnThingOnFirstException(this);
 		}
 	}
-	
+
 	/**
 	 * Basic constructor.
 	 */
@@ -23,7 +23,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 	{
 		state = false;
 	}
-	
+
 	/**
 	 * Get current state.
 	 *
@@ -33,7 +33,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 	{
 		return state;
 	}
-	
+
 	/**
 	 * Set current state
 	 */
@@ -41,7 +41,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 	{
 		state = newState;
 	}
-	
+
 	/**
 	 * Get the current DVD.
 	 */
@@ -50,7 +50,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 		requireOn();
 		return currentDVD;
 	}
-	
+
 	/**
 	 * Set the new current DVD.
 	 */
@@ -59,7 +59,7 @@ public class DVDPlayer extends TVPeripheral implements Serializable
 		requireOn();
 		currentDVD = newDVD;
 	}
-	
+
 	/**
 	 * Get the DVD title
 	 */

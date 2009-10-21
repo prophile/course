@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class Driver
 {
 	private static final String SERIALIZATION_FILE = "active.tv";
-	
+
 	private static TV readTVFromDisk ( String storageFile )
 	{
 		TV inputTV;
@@ -33,12 +33,12 @@ public class Driver
 			return null;
 		}
 	}
-	
+
 	private static TV createNewTV ()
 	{
 		return new TV();
 	}
-	
+
 	private static void writeTVToDisk ( String storageFile, TV tv ) throws IOException
 	{
 		FileOutputStream fos = null;
@@ -48,7 +48,7 @@ public class Driver
 		out.writeObject(tv);
 		out.close();
 	}
-	
+
 	/**
 	 * Application entry point
 	 *

@@ -9,7 +9,7 @@ public class TV implements Serializable
 	private boolean state;
 	private int channel;
 	private Hashtable<Integer,TVOutputStream> connectedStreams;
-		
+
 	private void requireOn () throws TurnTheDamnThingOnFirstException
 	{
 		if (!state)
@@ -17,7 +17,7 @@ public class TV implements Serializable
 			throw new TurnTheDamnThingOnFirstException(this);
 		}
 	}
-	
+
 	/**
 	 * Generic constructor
 	 */
@@ -27,7 +27,7 @@ public class TV implements Serializable
 		channel = 1;
 		connectedStreams = new Hashtable<Integer,TVOutputStream>();
 	}
-	
+
 	/**
 	 * Get power state.
 	 *
@@ -37,7 +37,7 @@ public class TV implements Serializable
 	{
 		return state;
 	}
-	
+
 	/**
 	 * Change power state.
 	 *
@@ -47,7 +47,7 @@ public class TV implements Serializable
 	{
 		state = newState;
 	}
-	
+
 	/**
 	 * Get the current channel
 	 *
@@ -58,7 +58,7 @@ public class TV implements Serializable
 		requireOn();
 		return channel;
 	}
-	
+
 	/**
 	 * Set the current channel
 	 *
@@ -69,7 +69,7 @@ public class TV implements Serializable
 		requireOn();
 		channel = newChannel;
 	}
-	
+
 	/**
 	 * Attach a streams to a channel
 	 *
@@ -96,7 +96,7 @@ public class TV implements Serializable
 			return;
 		}
 	}
-	
+
 	/**
 	 * Remove the stream attached to a given channel
 	 *
@@ -106,7 +106,7 @@ public class TV implements Serializable
 	{
 		attachStream(null, attachedChannel);
 	}
-	
+
 	/**
 	 * Get the attached output stream on a given channel
 	 *
@@ -117,7 +117,7 @@ public class TV implements Serializable
 	{
 		return connectedStreams.get(new Integer(attachedChannel));
 	}
-	
+
 	/**
 	 * Print current information to stdout
 	 */

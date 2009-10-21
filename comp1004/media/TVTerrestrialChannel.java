@@ -4,7 +4,7 @@
 public class TVTerrestrialChannel extends TVOutputStream
 {
 	private float frequency;
-	
+
 	/**
 	 * Basic constructor.
 	 *
@@ -14,7 +14,7 @@ public class TVTerrestrialChannel extends TVOutputStream
 	{
 		frequency = newFrequency;
 	}
-	
+
 	/**
 	 * Get the frequency of the channel
 	 */
@@ -22,7 +22,7 @@ public class TVTerrestrialChannel extends TVOutputStream
 	{
 		return frequency;
 	}
-	
+
 	/**
 	 * Set the frequency of the channel
 	 */
@@ -30,7 +30,7 @@ public class TVTerrestrialChannel extends TVOutputStream
 	{
 		frequency = newFrequency;
 	}
-	
+
 	/**
 	 * Display to the output screen
 	 */

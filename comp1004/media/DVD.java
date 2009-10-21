@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class DVD implements Serializable
 {
 	private String title;
-	
+
 	/**
 	 * Basic constructor.
 	 *
@@ -16,7 +16,7 @@ public class DVD implements Serializable
 	{
 		title = aTitle;
 	}
-	
+
 	/**
 	 * Fetch the title.
 	 *
@@ -26,7 +26,7 @@ public class DVD implements Serializable
 	{
 		return title;
 	}
-	
+
 	/**
 	 * Change to a new title.
 	 *
