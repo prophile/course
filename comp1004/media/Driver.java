@@ -67,74 +67,83 @@ public class Driver
 		}
 		try
 		{
+			boolean exitLoop = false;
 			// do whatever action the user asks
-			System.out.println("Enter your requested action");
-			System.out.print("> ");
-			String requestedAction = inputScanner.next();
-			if (requestedAction.equals("channel"))
+			while (!exitLoop)
 			{
-				mainTV.setChannel(inputScanner.nextInt());
-			}
-			else if (requestedAction.equals("on"))
-			{
-				mainTV.setState(true);
-			}
-			else if (requestedAction.equals("off"))
-			{
-				mainTV.setState(false);
-			}
-			else if (requestedAction.equals("tune"))
-			{
-				int ch = inputScanner.nextInt();
-				float freq = inputScanner.nextFloat();
-				mainTV.attachStream(new TVTerrestrialChannel(freq), ch);
-			}
-			else if (requestedAction.equals("attach-dvd"))
-			{
-				int ch = inputScanner.nextInt();
-				DVDPlayer player = new DVDPlayer();
-				mainTV.attachStream(player, ch);
-			}
-			else if (requestedAction.equals("clear"))
-			{
-				mainTV.removeStream(inputScanner.nextInt());
-			}
-			else if (requestedAction.equals("dvd"))
-			{
-				int ch = inputScanner.nextInt();
-				DVDPlayer player = (DVDPlayer)mainTV.getOutputStreamForChannel(ch);
-				if (player == null)
+				System.out.println("Enter your requested action");
+				System.out.print("> ");
+				String requestedAction = inputScanner.next();
+				if (requestedAction.equals("channel"))
 				{
-					System.out.println("No DVD player attached there.");
+					mainTV.setChannel(inputScanner.nextInt());
 				}
-				if (!inputScanner.hasNext())
+				else if (requestedAction.equals("on"))
 				{
-					System.out.print(">> ");
+					mainTV.setState(true);
 				}
-				String subcommand = inputScanner.next();
-				if (subcommand.equals("on"))
+				else if (requestedAction.equals("off"))
 				{
-					player.setState(true);
+					mainTV.setState(false);
 				}
-				else if (subcommand.equals("off"))
+				else if (requestedAction.equals("quit"))
 				{
-					player.setState(false);
+					exitLoop = true;
 				}
-				else if (subcommand.equals("switch"))
+				else if (requestedAction.equals("tune"))
 				{
-					player.insertDVD(new DVD(inputScanner.nextLine()));
+					int ch = inputScanner.nextInt();
+					float freq = inputScanner.nextFloat();
+					mainTV.attachStream(new TVTerrestrialChannel(freq), ch);
+				}
+				else if (requestedAction.equals("attach-dvd"))
+				{
+					int ch = inputScanner.nextInt();
+					DVDPlayer player = new DVDPlayer();
+					mainTV.attachStream(player, ch);
+				}
+				else if (requestedAction.equals("clear"))
+				{
+					mainTV.removeStream(inputScanner.nextInt());
+				}
+				else if (requestedAction.equals("dvd"))
+				{
+					int ch = inputScanner.nextInt();
+					DVDPlayer player = (DVDPlayer)mainTV.getOutputStreamForChannel(ch);
+					if (player == null)
+					{
+						System.out.println("No DVD player attached there.");
+					}
+					if (!inputScanner.hasNext())
+					{
+						System.out.print(">> ");
+					}
+					String subcommand = inputScanner.next();
+					if (subcommand.equals("on"))
+					{
+						player.setState(true);
+					}
+					else if (subcommand.equals("off"))
+					{
+						player.setState(false);
+					}
+					else if (subcommand.equals("switch"))
+					{
+						player.insertDVD(new DVD(inputScanner.nextLine()));
+					}
+					else
+					{
+						System.out.println("Unknown command.");
+					}
 				}
 				else
 				{
-					System.out.println("Unknown command.");
+					System.out.println("Unknown command (" + requestedAction + ")");
 				}
+				// actually display the TV
+				mainTV.display();
+				System.out.println("");
 			}
-			else
-			{
-				System.out.println("Unknown command (" + requestedAction + ")");
-			}
-			// actually display the TV
-			mainTV.display();
 			// store it
 			writeTVToDisk(mainTV);
 		}
