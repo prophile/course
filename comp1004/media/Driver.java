@@ -14,7 +14,7 @@ public class Driver
 {
 	private static final String SERIALIZATION_FILE = "active.tv";
 	
-	private static TV readTVFromDisk ()
+	private static TV readTVFromDisk ( String storageFile )
 	{
 		TV inputTV;
 		try
@@ -39,7 +39,7 @@ public class Driver
 		return new TV();
 	}
 	
-	private static void writeTVToDisk ( TV tv ) throws IOException
+	private static void writeTVToDisk ( String storageFile, TV tv ) throws IOException
 	{
 		FileOutputStream fos = null;
 		ObjectOutputStream out = null;
@@ -56,11 +56,21 @@ public class Driver
 	 */
 	public static void main ( String[] args )
 	{
+		String storageFile;
 		TV mainTV;
+		if (args.length > 0)
+		{
+			storageFile = args[0];
+		}
+		else
+		{
+			storageFile = Driver.SERIALIZATION_FILE;
+		}
+		System.out.println("Storage file: " + storageFile);
 		Scanner inputScanner = new Scanner(System.in);
 		Pattern whitespacePattern = Pattern.compile("\\p{Space}");
 		inputScanner.useDelimiter(whitespacePattern);
-		mainTV = readTVFromDisk();
+		mainTV = readTVFromDisk(storageFile);
 		if (mainTV == null)
 		{
 			mainTV = createNewTV();
@@ -145,7 +155,7 @@ public class Driver
 				System.out.println("");
 			}
 			// store it
-			writeTVToDisk(mainTV);
+			writeTVToDisk(storageFile, mainTV);
 		}
 		catch (Exception e)
 		{
