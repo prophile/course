@@ -7,7 +7,7 @@ public class TV
 {
 	private boolean state;
 	private int channel;
-	private Hashtable<Integer,TVPeripheral> connectedPeripherals;
+	private Hashtable<Integer,TVOutputStream> connectedStreams;
 		
 	private void requireOn () throws TurnTheDamnThingOnFirstException
 	{
@@ -17,47 +17,76 @@ public class TV
 		}
 	}
 	
+	/**
+	 * Generic constructor
+	 */
 	public TV ()
 	{
 		state = false;
 		channel = 1;
-		connectedPeripherals = new Hashtable<Integer,TVPeripheral>();
+		connectedStreams = new Hashtable<Integer,TVOutputStream>();
 	}
 	
+	/**
+	 * Get power state.
+	 *
+	 * @return Whether the TV is on
+	 */
 	public boolean getState ()
 	{
 		return state;
 	}
 	
+	/**
+	 * Change power state.
+	 *
+	 * @param newState The new state of the system
+	 */
 	public void setState ( boolean newState )
 	{
 		state = newState;
 	}
 	
+	/**
+	 * Get the current channel
+	 *
+	 * @return The current channel number
+	 */
 	public int getChannel () throws TurnTheDamnThingOnFirstException
 	{
 		requireOn();
 		return channel;
 	}
 	
+	/**
+	 * Set the current channel
+	 *
+	 * @param newChannel The new channel
+	 */
 	public void setChannel ( int newChannel ) throws TurnTheDamnThingOnFirstException
 	{
 		requireOn();
 		channel = newChannel;
 	}
 	
-	public void attachPeripheral ( TVPeripheral peripheral, int attachedChannel )
+	/**
+	 * Attach a streams to a channel
+	 *
+	 * @param stream The stream object to attach
+	 * @param attachedChannel The channel to which the stream will be attached
+	 */
+	public void attachStream ( TVOutputStream stream, int attachedChannel )
 	{
 		Integer basicKey = new Integer(attachedChannel);
 		try
 		{
-			if (peripheral == null)
+			if (stream == null)
 			{
-				connectedPeripherals.remove(basicKey);
+				connectedStreams.remove(basicKey);
 			}
 			else
 			{
-				connectedPeripherals.put(basicKey, peripheral);
+				connectedStreams.put(basicKey, stream);
 			}
 		}
 		catch (Exception except)
@@ -67,25 +96,44 @@ public class TV
 		}
 	}
 	
-	public void removePeripheral ( int attachedChannel )
+	/**
+	 * Remove the stream attached to a given channel
+	 *
+	 * @param attachedChannel The channel from which to remove the stream
+	 */
+	public void removeStream ( int attachedChannel )
 	{
-		attachPeripheral(null, attachedChannel);
+		attachStream(null, attachedChannel);
 	}
 	
-	public TVPeripheral getPeripheralForChannel ( int attachedChannel )
+	/**
+	 * Get the attached output stream on a given channel
+	 *
+	 * @param attachedChannel The channel from which to fetch the output stream
+	 * @return Either the attached stream or null if none.
+	 */
+	public TVOutputStream getOutputStreamForChannel ( int attachedChannel )
 	{
-		return connectedPeripherals.get(new Integer(attachedChannel));
+		return connectedStreams.get(new Integer(attachedChannel));
 	}
 	
+	/**
+	 * Print current information to stdout
+	 */
 	public void display () throws TurnTheDamnThingOnFirstException
 	{
 		requireOn();
 		System.out.println("You're watching channel: " + channel);
-		TVPeripheral peripheral = getPeripheralForChannel(channel);
-		if (peripheral != null)
+		TVOutputStream stream = getOutputStreamForChannel(channel);
+		if (stream != null)
 		{
-			System.out.println("Attached peripheral: " + peripheral.getClass().getName());
-			System.out.println("\tShowing: " + peripheral.getDisplayedTitle());
+			stream.display(this);
+		}
+		else
+		{
+			// no stream on the current channel, show nothing
+			System.out.println("The screen is black.");
+			System.out.println("You are eaten by a grue.");
 		}
 	}
 }
